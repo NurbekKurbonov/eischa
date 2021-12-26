@@ -1,0 +1,72 @@
+{% extends 'secondadmin/base_sa.html' %}
+
+{% block title %}
+			Davlatni o`zgartirish
+		{% endblock title %} 
+
+{% block namepage %}
+Davlatni o`zgartirish
+{% endblock namepage %}
+
+
+{% block content %}
+<form action="{% url 'editviloyat' viloyat.id %}" method="post">
+{% include 'partials/_messages.html'%} {% csrf_token %}
+    
+    <div class="card-body text-md-right ">
+        <a href="{% url 'viloyat'%}"                             
+            class="btn btn-warning">Bekor qilish</a>
+    </div>   
+    
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">                                    
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label class="form-label" for="">Viloyat joylashgan davlatni tanlang</label>
+                            <select 
+                                class="form-control" 
+                                autofocus required="true"                                           
+                                name="viloyat_davlati"
+                                value = {{values.viloyat_davlati}}>
+                                {% for dav in davlatlar %}
+                                <option>{{dav.davlat_nomi}}</option>                                  
+                                {% endfor %}                          
+                            </select>
+                        </div> 
+                        <div class="mb-3 col-md-4">
+                            <label class="form-label" for="">Viloyat kodi</label>
+                            <input type="number" 
+                                class="form-control" 
+                                autofocus required="true"
+                                placeholder="Masalan: 1"                                
+                                name="viloyat_kodi"
+                                value = {{values.viloyat_kodi}}>
+                        </div>
+                        
+                        <div class="mb-3 col-md-4">
+                            <label class="form-label" for="">Viloyat nomi</label>
+                            <input type="text" 
+                                class="form-control" 
+                                autofocus required="true"
+                                placeholder="Masalan: O`zbekiston"                              
+                                name="viloyat_nomi"
+                                value = {{values.viloyat_nomi}}>
+                        </div>
+                                                
+                        <div class="mb-3 col-md-2">
+                            <a href="{% url 'delviloyat' viloyat.id %}" class="btn btn-danger">O'chirish</a>                            
+                        </div>
+                            
+            </div>
+        </div>
+    </div>
+    <div class="text-md-right">
+        <input type="submit" 
+            value="Saqlash" 
+            class="btn btn-primary"/>
+    </div>
+</div></form>
+{% endblock content %}

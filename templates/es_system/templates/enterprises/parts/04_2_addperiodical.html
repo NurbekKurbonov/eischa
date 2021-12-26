@@ -1,0 +1,131 @@
+{% extends 'enterprises/base_enterprises.html' %}
+{% load static %}
+{% block title %}
+			Energiya iste'molchilari
+		{% endblock title %} 
+		
+		{% block namepage %}
+			Davriy ma'lumotlar
+		{% endblock namepage %} 
+
+		{% block content %}
+<form action="{% url 'ges_addbuild' %}" method="post">
+	{% include 'partials/_messages.html'%} {% csrf_token %}
+<div class="card-body">	
+	<div class="text-md-right">
+		<a href="{% url 'inperiodical' %}"                             
+			class="btn btn-warning">Bekor qilish</a>
+	</div>
+</div>
+		<div class="row">
+			<div class="col-4">
+				<div class="card">
+					<div class="card-body">
+						
+							<div class="row">
+								<div class="mb-3 col-md-6">
+									<label class="form-label" for="">Hisobot nomi</label>
+									<input type="text" 
+										class="form-control" 
+										placeholder=""                                
+										name="bino_nomi"
+										value = {{values.bino_nomi}}>
+								</div>
+								<div class="mb-3 col-md-6">
+									<label class="form-label" for="">Kiritilgan sana</label>
+									<input type="text" 
+										class="form-control" 
+										placeholder=""                                
+										name="bino_nomi"
+										value = {{values.bino_nomi}}>
+								</div>
+							</div>
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="col-4">
+				<div class="card">
+					<div class="card-body">
+						
+							<div class="row">
+								<div class="mb-3 col-md-5">
+									<label class="form-label" for="">Mahsulot miqdori</label>
+									<input type="text" 
+										class="form-control" 
+										placeholder="Ishlab chiqarilgan mahsulot"                                
+										name="bino_nomi"
+										value = {{values.bino_nomi}}>
+								</div>
+								<div class="mb-3 col-md-2">
+									<label class="form-label" for="">Birligi</label>
+									<input type="text" 
+										class="form-control" 
+										placeholder="birlik"                                
+										name="bino_nomi"
+										value = {{values.bino_nomi}}>
+								</div>
+								<div class="mb-3 col-md-5">
+									<label class="form-label" for="">Pul birligida mln.so'mda</label>
+									<input type="text" 
+										class="form-control" 
+										placeholder="Ishlab chiqarilgan mahsulot"                                
+										name="bino_nomi"
+										value = {{values.bino_nomi}}>
+								</div>
+							</div>
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="col-6">
+				<div class="card">
+					<div class="card-body">
+						
+							<div class="row">
+								<div class="mb-3 col-md-4">
+									<label class="form-label" for="">Bino nomi</label>
+									<input type="text" 
+										class="form-control" 
+										placeholder="Bino nomini kiriting"                                
+										name="bino_nomi"
+										value = {{values.bino_nomi}}>
+								</div>
+							</div>
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="col-6">
+				<div class="card">
+					<div class="card-body">
+						
+							<div class="row">
+								<div class="mb-3 col-md-4">
+									<label class="form-label" for="">Bino nomi</label>
+									<input type="text" 
+										class="form-control" 
+										placeholder="Bino nomini kiriting"                                
+										name="bino_nomi"
+										value = {{values.bino_nomi}}>
+								</div>
+							</div>
+						
+					</div>
+				</div>
+			</div>
+
+		</div>		
+		<div class="card-body">
+			<div class="text-md-right">
+				<input type="submit" 
+					value="Qabul qilish" 
+					class="btn btn-primary"/>
+			</div>                        
+		</div>
+
+</form>
+		{% endblock content %}

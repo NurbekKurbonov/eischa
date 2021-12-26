@@ -1,0 +1,47 @@
+{% extends 'secondadmin/base_sa.html' %}
+
+{% block title %}
+			Ikkinchi admin
+		{% endblock title %} 
+
+{% block namepage %}
+Davlatlar
+{% endblock namepage %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">            
+            <div class="card-body">
+                <div class="text-md-right mb-3">
+                    <a href="{% url 'addcountry' %}" class="btn btn-pill btn-success" > <i data-feather="plus-square"></i>Yangi davlat qo'shish</a>                       
+                </div>                
+                <table class="table table-striped table-hover">
+                    {% include 'partials/_messages.html'%} {% csrf_token %}{% if davlatlar.count %}
+                    <thead>
+                        <tr>
+                            <th style="width:25%">Kodi</th>                             
+                            <th>Davlat nomi</th>                                                       
+                            <th>Harakat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dav in davlatlar %}                                                     
+                            <tr>                                
+                                <td >{{dav.davlat_kodi}}</td>
+                                <td>{{dav.davlat_nomi}}</td>                                
+                                <td class="table-action">
+                                    <a href="{% url 'editcountry' dav.id %}"><i class="align-middle" data-feather="edit-2"></i></a>                                    
+                                </td>
+                            </tr>  
+                        {% endfor %}                       
+                    </tbody>
+                  {% endif %} 
+                </table>  
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,59 @@
+{% extends 'secondadmin/base_sa.html' %}
+
+{% block title %}
+			Davlatni o`zgartirish
+		{% endblock title %} 
+
+{% block namepage %}
+Davlatni o`zgartirish
+{% endblock namepage %}
+
+
+{% block content %}
+<form action="{% url 'editcountry' davlat.id %}" method="post">
+{% include 'partials/_messages.html'%} {% csrf_token %}
+    
+    <div class="card-body text-md-right ">
+        <a href="{% url 'country'%}"                             
+            class="btn btn-warning">Bekor qilish</a>
+    </div>   
+    
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">                                    
+                    <div class="row">                        
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="">Davlat kodi</label>
+                            <input type="number" 
+                                class="form-control" 
+                                autofocus required="true"
+                                placeholder="Masalan: 1"                                
+                                name="davlat_kodi"
+                                value = {{values.davlat_kodi}}>
+                        </div>
+                        
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="">Davlat nomi</label>
+                            <input type="text" 
+                                class="form-control" 
+                                autofocus required="true"
+                                placeholder="Masalan: O`zbekiston"                              
+                                name="davlat_nomi"
+                                value = {{values.davlat_nomi}}>
+                        </div>                        
+                        <div class="mb-3 col-md-2">
+                            <a href="{% url 'delcountry' davlat.id%}" class="btn btn-danger">O'chirish</a>                            
+                        </div>
+                            
+            </div>
+        </div>
+    </div>
+    <div class="text-md-right">
+        <input type="submit" 
+            value="Saqlash" 
+            class="btn btn-primary"/>
+    </div>
+</div></form>
+{% endblock content %}

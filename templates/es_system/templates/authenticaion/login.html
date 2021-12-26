@@ -1,0 +1,56 @@
+{% extends 'base_auth_.html' %}
+{% load static %}
+
+{% block title %}
+			login
+		{% endblock title %}
+
+{% block content %}	
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="col-lg-12">
+      <div class="card">
+        <img class="card-img-top" src="{%static 'img/photos/login_emb.png'%}" alt="emblem">
+        <div class="card-header text-center">
+          <h3 class="mb-0">Sistemaga kirish</h3>
+          <a href="{% url 'register' %}">registratsya</a>
+        </div>
+        <div class="card-body">
+          
+          <form class="row row-cols-md-auto align-items-center">
+
+            <div class="col-md-12">
+              <label class="sr-only" for="inlineFormInputGroupUsername2">eis id</label>
+              <div class="input-group mb-3 mr-sm-2">
+                <div class="input-group-text">eis id</div>
+                <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="eis id ni kiriting">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <label class="sr-only" for="inlineFormInputGroupUsername2">parol</label>
+              <div class="input-group mb-3 mr-sm-2">
+                <div class="input-group-text"> parol</div>
+                <input type="password" class="form-control" id="inlineFormInputGroupUsername2" placeholder="parolni kiriting">
+              </div>
+            </div>
+        
+            <div class="col-12">
+              <div class="form-check mb-1 mr-sm-2">
+                <input type="checkbox" class="form-check-input" id="customControlInline">
+                <label class="form-check-label" for="customControlInline">Eslab qolish</label>
+              </div>
+            </div>
+
+          <input type="submit" value="Kirish" class="btn btn-block btn-primary" />
+          </form>	
+         
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+
+				
+{% endblock content%}

@@ -1,0 +1,89 @@
+{% extends 'secondadmin/base_sa.html' %}
+
+{% block title %}
+			Davlatni o`zgartirish
+		{% endblock title %} 
+
+{% block namepage %}
+Tumanni o`zgartirish
+{% endblock namepage %}
+
+
+{% block content %}
+<form action="{% url 'edittuman' tuman.id %}" method="post">
+{% include 'partials/_messages.html'%} {% csrf_token %}
+    
+    <div class="card-body text-md-right ">
+        <a href="{% url 'tuman'%}"                             
+            class="btn btn-warning">Bekor qilish</a>
+    </div>   
+    
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">                                    
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="">Tuman joylashgan davlatni tanlang</label>
+                            <select 
+                                class="form-control"
+                                autofocus required="true"                                      
+                                name="tuman_davlati"
+                                value = {{values.tuman_davlati}}>
+                                {% for dav in davlatlar %}
+                                <option>{{dav.davlat_nomi}}</option>                                  
+                                {% endfor %}                          
+                            </select>
+                        </div> 
+
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="">Tuman joylashgan viloyat tanlang</label>
+                            <select 
+                                class="form-control" 
+                                autofocus required="true" name="tuman_viloyati">
+
+                                <option selected name="tuman_viloyati" 
+                                value = {{values.tuman_viloyati}}> {{values.tuman_viloyati}}</option>
+                                
+                                {% for vil in viloyatlar %}
+                                <option name="viloyat_nomi" value= {{vil.viloyat_nomi}}>
+                                    {{vil.viloyat_nomi}}</option>                                  
+                                {% endfor %}                          
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="">Tuman kodi</label>
+                            <input type="number" 
+                                class="form-control" 
+                                autofocus required="true"
+                                placeholder="Masalan: 1"                                
+                                name="tuman_kodi"
+                                value = {{values.tuman_kodi}}>
+                        </div>
+                        
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="">Tuman nomi</label>
+                            <input type="text" 
+                                class="form-control" 
+                                autofocus required="true"
+                                placeholder=" "                              
+                                name="tuman_nomi"
+                                value = {{values.tuman_nomi}}>
+                        </div> 
+                                                
+                        <div class="mb-3 col-md-2">
+                            <a href="{% url 'deltuman' tuman.id %}" class="btn btn-danger">O'chirish</a>                            
+                        </div>
+                            
+            </div>
+        </div>
+    </div>
+    <div class="text-md-right">
+        <input type="submit" 
+            value="Saqlash" 
+            class="btn btn-primary"/>
+    </div>
+</div></form>
+{% endblock content %}

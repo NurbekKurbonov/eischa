@@ -1,0 +1,51 @@
+{% extends 'secondadmin/base_sa.html' %}
+
+{% block title %}
+			Ikkinchi admin
+		{% endblock title %} 
+
+{% block namepage %}
+Viloyatlar
+{% endblock namepage %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">            
+            <div class="card-body">
+                <div class="text-md-right mb-3">
+                    <a href="{% url 'addviloyat' %}" class="btn btn-pill btn-success" > <i data-feather="plus-square"></i>Yangi viloyat qo'shish</a>                       
+                </div>                
+                <table class="table table-striped table-hover">
+                    {% include 'partials/_messages.html'%} {% csrf_token %}{% if viloyat.count %}
+                    <thead>
+                        <tr>
+                            <th style="width:25%;">№</th>
+                            <th style="width:25%;">Viloyat kodi</th>
+                            <th style="width:25%">Viloyat nomi</th>                            
+                            <th style="width:25%">Viloyat joylashgan davlat</th>
+                            <th>Harakat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for vil in viloyat %}                                                     
+                            <tr>
+                                <td>#</td>
+                                <td>{{vil.viloyat_kodi}}</td>
+                                <td >{{vil.viloyat_nomi}}</td>                                
+                                <td >{{vil.viloyat_davlati}}</td>
+                                <td class="table-action">
+                                    <a href="{% url 'editviloyat' vil.id %}"><i class="align-middle" data-feather="edit-2"></i></a>                                    
+                                </td>
+                            </tr>  
+                        {% endfor %}                       
+                    </tbody>
+                  {% endif %} 
+                </table>  
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

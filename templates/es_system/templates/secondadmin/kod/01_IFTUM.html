@@ -1,0 +1,59 @@
+{% extends 'secondadmin/base_sa.html' %}
+
+{% block title %}
+			Ikkinchi admin
+		{% endblock title %} 
+
+{% block namepage %}
+Iqtisodiy faoliyat turlarining umumiy klassifikatori 
+{% endblock namepage %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">            
+            <div class = "card-header">
+                uz: IFTUM - Iqtisodiy faoliyat turlarining umumiy klassifikatori
+                <p>ru: ОКЕД</p>
+            </div>
+            <div class="card-body">
+                <div class="text-md-right mb-3">
+                    <a href="{% url 'addoked' %}" class="btn btn-pill btn-success" > <i data-feather="plus-square"></i>Yangi tuman qo'shish</a>                       
+                </div>                
+                <table class="table table-striped table-hover table-bordered ">
+                    {% include 'partials/_messages.html'%} {% csrf_token %} {% if iftum.count %}
+                    <thead>
+                        <tr>                            
+                            <th style="width:10%;">Bo'lim</th>
+                            <th style="width:5%;">Bob</th>
+                            <th style="width:5%;">Guruh</th>
+                            <th style="width:5%;">Sinf</th>
+                            <th style="width:5%;">Tartib</th>
+                            <th style="width:65%; text-align: center;">Nomlanishi</th>
+                            <th style="width:5%;">Harakat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for v in iftum %}                                                     
+                            <tr>
+                                <td><B>{{v.bolim}}</B></td>
+                                <td >{{v.bob}}</td>                                
+                                <td >{{v.guruh}}</td>
+                                <td >{{v.sinf}}</td>
+                                <td >{{v.tartib}}</td>
+                                <td style="width:65%; text-align: center;">{{v.nomi}}</td>
+                                <td class="table-action">
+                                    <a href="{% url 'editoked' v.id %}"><i class="align-middle" data-feather="edit-2"></i></a>                                    
+                                </td>
+                            </tr>  
+                        {% endfor %}                       
+                    </tbody>
+                 {% endif %}
+                </table>  
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

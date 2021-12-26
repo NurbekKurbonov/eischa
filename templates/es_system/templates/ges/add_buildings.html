@@ -1,0 +1,157 @@
+{% extends 'base_ges.html' %}
+
+{% block namepage %}
+    Yangi bino va inshoot qo'shish
+{% endblock namepage %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="text-md-right">
+                    <a href="{% url 'ges_inbuild' %}"                             
+                        class="btn btn-warning">Bekor qilish</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'ges_addbuild' %}" method="post">
+                    {% include 'partials/_messages.html'%} {% csrf_token %}
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label class="form-label" for="">Bino nomi</label>
+                            <input type="text" 
+                                class="form-control" 
+                                placeholder="Bino nomini kiriting"                                
+                                name="bino_nomi"
+                                value = {{values.bino_nomi}}>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label class="form-label" for="">Oxirgi energo audit sanasi</label>
+                            <input type="date" 
+                                class="form-control" 
+                                lang="uz-UZ"                                                             
+                                name="oxirgi_audit"
+                                value = {{values.oxirgi_audit}}>
+                        </div>
+
+                        <div class="mb-3 col-md-4">
+                            <label class="form-label" for="">Bino turi</label>
+                            <input type="text" 
+                                class="form-control"                                                           
+                                name="bino_turi"
+                                value = {{values.bino_turi}}>
+                        </div>
+
+                        <div class="mb-3 col-md-2">
+                            <label class="form-label" for="">Umumiy maydoni (<B>m<sup>2</sup></B>)</label>
+                            <input type="number" 
+                                class="form-control"                                                                                             
+                                name="umumiy_maydoni"
+                                value = {{values.umumiy_maydoni}}>
+                        </div>
+
+                        <div class="mb-3 col-md-2">
+                            <label class="form-label" for="">Isitish maydoni(<B>m<sup>2</sup></B>)</label>
+                            <input type="number" 
+                                class="form-control"                                                           
+                                name="isitish_maydoni"
+                                value = {{values.isitish_maydoni}}>
+                        </div>
+                        
+                        <div class="mb-3 col-md-2">
+                            <label class="form-label" for="">Sovutiladigan maydon(<B>m<sup>2</sup></B>)</label>
+                            <input type="number" 
+                                class="form-control"                                                           
+                                name="sovutiladigan_maydon"
+                                value = {{values.sovutiladigan_maydon}}>
+                        </div>
+                        
+                        <!-- songa doir -->
+
+                        <div class="mb-3 col-md-3">
+                            <label class="form-label" for="">Etajlar soni</label>
+                            <input type="number" 
+                                class="form-control"                                                           
+                                name="etajlar_soni"
+                                value = {{values.etajlar_soni}}>
+                        </div>
+
+                        <div class="mb-3 col-md-3">
+                            <label class="form-label" for="">Xonalar soni</label>
+                            <input type="number" 
+                                class="form-control"                                                           
+                                name="xonalar_soni"
+                                value = {{values.xonalar_soni}}>
+                        </div>
+                        
+                        <div class="mb-3 col-md-3">
+                            <label class="form-label" for="">Ish soatlari (<B>soat</B>)</label>
+                            <input type="number" 
+                                class="form-control"   
+                                placeholder = "binodan yiliga foydalanish soatlari"                                                        
+                                name="ish_soatlari"
+                                value = {{values.ish_soatlari}}>
+                        </div>
+
+                        
+                    </div>
+                    <div class="card-body">
+                        <div class="text-md-right">
+                            <input type="submit" 
+                                value="Qabul qilish" 
+                                class="btn btn-primary"/>
+                        </div>                        
+                    </div>
+
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+                            <input type="number" 
+                                class="form-control"                                                           
+                                name="yillik_issiq_suv_sarfi"
+                                value = {{values.yillik_issiq_suv_sarfi}}>
+                        </div>
+
+                        <div class="mb-3 col-md-2">
+                            <label class="form-label" for="">Bug'(<B>tonna</B>)  </label>
+                            <input type="number" 
+                                class="form-control"                                                           
+                                name="yillik_bug_sarfi"
+                                value = {{values.yillik_bug_sarfi}}>
+                        </div>
+
+                        <div class="mb-3 col-md-2">
+                            <label class="form-label" for="">Ko'mir(<B>tonna</B>)  </label>
+                            <input type="number" 
+                                class="form-control"                                                           
+                                name="yillik_komir_sarfi"
+                                value = {{values.yillik_komir_sarfi}}>
+                        </div>
+
+                        <div class="mb-3 col-md-2">
+                            <label class="form-label" for="">Neft mahsulot(<B>tonna</B>)  </label>
+                            <input type="number" 
+                                class="form-control"                                                           
+                                name="yillik_neft_mahsulotlari_sarfi"
+                                value = {{values.yillik_neft_mahsulotlari_sarfi}}>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-md-right">
+                            <input type="submit" 
+                                value="Qabul qilish" 
+                                class="btn btn-primary"/>
+                        </div>                        
+                    </div>
+
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
